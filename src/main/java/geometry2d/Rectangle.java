@@ -19,8 +19,8 @@ public class Rectangle implements Figure {
         this.height=height;
     }
     public void setWidth(float width){
-        if(height<0){
-            throw new VariablesLesThanZeroException("height",this.height);
+        if(width<0){
+            throw new VariablesLesThanZeroException("height",this.width);
         }
         if(width==0){
             throw new VariablesNotSetException("width,height");
