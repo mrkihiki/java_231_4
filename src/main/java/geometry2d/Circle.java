@@ -1,37 +1,30 @@
 package geometry2d;
 
-import exceptions.VariablesLesThanZero;
-import exceptions.VariablesNotSet;
+import exceptions.VariablesLesThanZeroException;
+import exceptions.VariablesNotSetException;
 
 public class Circle implements Figure {
     private float radius;
-    public Circle(){};
     public Circle(float radius){
-        this.radius = radius;
-        if(this.radius<0){
-            throw new VariablesLesThanZero("radius",this.radius);
+        if(radius<0){
+            throw new VariablesLesThanZeroException("radius",this.radius);
         }
+        this.radius = radius;
     }
     public void setRadius(float radius){
+        if(radius<0){
+            throw new VariablesLesThanZeroException("radius",this.radius);
+        }
+        if(radius==0){
+            throw new VariablesNotSetException("radius");
+        }
         this.radius=radius;
     }
     public float area()  {
-        if(this.radius<0){
-            throw new VariablesLesThanZero("radius",this.radius);
-        }
-        if(this.radius==0){
-            throw new VariablesNotSet("radius");
-        }
         return (float) (radius*radius*Math.PI);
     }
 
     public float perimeter() {
-        if(this.radius<0){
-            throw new VariablesLesThanZero("radius",this.radius);
-        }
-        if(this.radius==0){
-            throw new VariablesNotSet("radius");
-        }
         return (float) (2*radius*Math.PI);
     }
     public String toString(){

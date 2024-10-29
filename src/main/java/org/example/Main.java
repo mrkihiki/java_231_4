@@ -1,7 +1,7 @@
 package org.example;
 
-import exceptions.VariablesLesThanZero;
-import exceptions.VariablesNotSet;
+import exceptions.VariablesLesThanZeroException;
+import exceptions.VariablesNotSetException;
 import geometry2d.Circle;
 import geometry2d.Rectangle;
 import geometry3d.Cylinder;
@@ -25,7 +25,7 @@ public class Main {
             System.out.println(rectangle.area());
             System.out.println(rectangle.toString());
 
-        } catch (VariablesLesThanZero | VariablesNotSet ex) {
+        } catch (VariablesLesThanZeroException | VariablesNotSetException ex) {
             throw new RuntimeException(ex);
         }
         //System.out.printf("Hello and welcome!");

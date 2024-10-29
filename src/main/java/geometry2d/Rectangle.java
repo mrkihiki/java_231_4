@@ -1,61 +1,45 @@
 package geometry2d;
 
-import exceptions.VariablesLesThanZero;
-import exceptions.VariablesNotSet;
+import exceptions.VariablesLesThanZeroException;
+import exceptions.VariablesNotSetException;
 
 public class Rectangle implements Figure {
     private float width;
     private float height;
-    public Rectangle(){};
+
     public Rectangle(int width, int height) {
+        if(width<0 && height<0){
+            throw new VariablesLesThanZeroException("width","height",this.width,this.height);
+        }else if(width<0){
+            throw new VariablesLesThanZeroException("width",this.width);
+        }else if(height<0){
+            throw new VariablesLesThanZeroException("height",this.height);
+        }
         this.width=width;
         this.height=height;
-        if(this.width<0 && this.height<0){
-            throw new VariablesLesThanZero("width","height",this.width,this.height);
-        }else if(this.width<0){
-            throw new VariablesLesThanZero("width",this.width);
-        }else if(this.height<0){
-            throw new VariablesLesThanZero("height",this.height);
-        }
     }
     public void setWidth(float width){
+        if(height<0){
+            throw new VariablesLesThanZeroException("height",this.height);
+        }
+        if(width==0){
+            throw new VariablesNotSetException("width,height");
+        }
         this.width= width;
     }
     public void setHeight(float height){
+       if(height<0){
+            throw new VariablesLesThanZeroException("height",this.height);
+        }
+        if(height==0){
+            throw new VariablesNotSetException("width,height");
+        }
         this.height= height;
     }
     public float area() {
-        if(this.width<0 && this.height<0){
-            throw new VariablesLesThanZero("width","height",this.width,this.height);
-        }else if(this.width<0){
-            throw new VariablesLesThanZero("width",this.width);
-        }else if(this.height<0){
-            throw new VariablesLesThanZero("height",this.height);
-        }
-        if(this.width==0 && this.height==0){
-            throw new VariablesNotSet("width,height");
-        }else if(this.width==0){
-            throw new VariablesNotSet("width,height");
-        }else if(this.height==0){
-            throw new VariablesNotSet("width,height");
-        }
         return width * height;
     }
     public float perimeter() {
-        if(this.width<0 && this.height<0){
-            throw new VariablesLesThanZero("width","height",this.width,this.height);
-        }else if(this.width<0){
-            throw new VariablesLesThanZero("width",this.width);
-        }else if(this.height<0){
-            throw new VariablesLesThanZero("height",this.height);
-        }
-        if(this.width==0 && this.height==0){
-            throw new VariablesNotSet("width,height");
-        }else if(this.width==0){
-            throw new VariablesNotSet("width,height");
-        }else if(this.height==0){
-            throw new VariablesNotSet("width,height");
-        }
         return (width + height)*2;
     }
     public String toString(){
